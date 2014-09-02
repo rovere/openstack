@@ -1,0 +1,27 @@
+#!/bin/sh
+yum install -y gnuplot
+yum install -y vim vi xclock screen tmux vim-minimal
+yum install -y git
+yum install -y glibc glibc-devel
+yum install -y mesa-libGL mesa-libGL-devel
+yum install -y glx-utils
+yum install -y xorg-x11-xauth
+yum install -y highlight
+yum install -y colordiff
+yum install -y enscript
+yum install -y pstack
+yum install -y ImageMagick
+yum install -y strace
+yum install -y elinks
+yum install -y mesa-libGLU mesa-libGLU-devel
+yum install -y libXpm-devel
+yum install -y libpng libpng-devel libjpeg-devel
+yum install -y ncurses ncurses-devel
+yum install -y gcc gcc-devel
+yum install -y libselinux libselinux-devel
+yum install -y emacs
+yum install -y tk
+yum install -y compat-libstdc++-33
+yum install -y cern-config-users
+yum install -y R
+yum install -y curl-devel
