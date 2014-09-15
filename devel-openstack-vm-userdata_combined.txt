@@ -1,7 +1,7 @@
-Content-Type: multipart/mixed; boundary="===============4507084691410592236=="
+Content-Type: multipart/mixed; boundary="===============6808096490703399604=="
 MIME-Version: 1.0
 
---===============4507084691410592236==
+--===============6808096490703399604==
 Content-Type: text/x-shellscript; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -36,9 +36,9 @@ yum install -y cern-config-users
 yum install -y R
 yum install -y curl-devel
 yum install -y python-devel
+yum install -y arc
 
-
---===============4507084691410592236==
+--===============6808096490703399604==
 Content-Type: text/cloud-config; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -51,4 +51,4 @@ runcmd:
  - [ /usr/bin/yum, "localinstall", -y, "/tmp/HEP_OSlibs_SL6-1.0.16-0.el6.x86_64.rpm"]
 
 
---===============4507084691410592236==--
+--===============6808096490703399604==--
