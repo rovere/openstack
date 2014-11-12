@@ -27,3 +27,4 @@ yum install -y R
 yum install -y curl-devel
 yum install -y python-devel
 yum install -y arc
+yum install -y docker-io

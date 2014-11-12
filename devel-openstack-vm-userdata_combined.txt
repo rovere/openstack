@@ -1,12 +1,12 @@
-Content-Type: multipart/mixed; boundary="===============6808096490703399604=="
+Content-Type: multipart/mixed; boundary="===============1953235708642021237=="
 MIME-Version: 1.0
 
---===============6808096490703399604==
+--===============1953235708642021237==
 Content-Type: text/x-shellscript; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: attachment;
-	filename="devel-openstack-vm-userdata_shell.txt"
+ filename="devel-openstack-vm-userdata_shell.txt"
 
 #!/bin/sh
 yum install -y gnuplot
@@ -37,13 +37,14 @@ yum install -y R
 yum install -y curl-devel
 yum install -y python-devel
 yum install -y arc
+yum install -y docker-io
 
---===============6808096490703399604==
+--===============1953235708642021237==
 Content-Type: text/cloud-config; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: attachment;
-	filename="devel-openstack-vm-userdata_cloud-config.txt"
+ filename="devel-openstack-vm-userdata_cloud-config.txt"
 
 #cloud-config
 runcmd:
@@ -51,4 +52,4 @@ runcmd:
  - [ /usr/bin/yum, "localinstall", -y, "/tmp/HEP_OSlibs_SL6-1.0.16-0.el6.x86_64.rpm"]
 
 
---===============6808096490703399604==--
+--===============1953235708642021237==--
