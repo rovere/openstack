@@ -2,4 +2,21 @@
 runcmd:
  - [ /usr/bin/wget, "http://linuxsoft.cern.ch/wlcg/sl6/x86_64/HEP_OSlibs_SL6-1.0.16-0.el6.x86_64.rpm", -O, "/tmp/HEP_OSlibs_SL6-1.0.16-0.el6.x86_64.rpm"]
  - [ /usr/bin/yum, "localinstall", -y, "/tmp/HEP_OSlibs_SL6-1.0.16-0.el6.x86_64.rpm"]
+ - [ /usr/bin/yum, "install", -y, "cern-config-users" ]
+ - [ /usr/sbin/cern-config-users, --setup-all ]
 
+# install cvmfs repositories for CMS
+
+ - [ /usr/bin/wget, "https://cern-cloudinit-modules.web.cern.ch/cern-cloudinit-modules/cern-cloudinit-modules.repo" ]
+ - [ /bin/mv, "cern-cloudinit-modules.repo", "/etc/yum.repos.d" ]
+ - [ /usr/bin/yum, "install", -y, "cern-cloudinit-latest-cvmfs.noarch" ]   
+
+# needed for LCG software compatibility
+
+ - [ /usr/bin/yum, "install", -y, "compat-expat1.x86_64" ]   
+
+cvmfs:
+ install: True
+ local:
+  CVMFS_REPOSITORIES: cms.cern.ch,grid.cern.ch
+  CVMFS_HTTP_PROXY: DIRECT
