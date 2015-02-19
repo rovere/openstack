@@ -28,3 +28,5 @@ yum install -y curl-devel
 yum install -y python-devel
 yum install -y arc
 yum install -y docker-io
+yum install -y voms-clients
+
