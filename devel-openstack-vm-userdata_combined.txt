@@ -1,14 +1,15 @@
-Content-Type: multipart/mixed; boundary="===============6871949986188555821=="
+Content-Type: multipart/mixed; boundary="===============0110007543605621124=="
 MIME-Version: 1.0
 
---===============6871949986188555821==
+--===============0110007543605621124==
 Content-Type: text/x-shellscript; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: attachment;
-	filename="devel-openstack-vm-userdata_shell.txt"
+ filename="devel-openstack-vm-userdata_shell.txt"
 
 #!/bin/sh
+yum install -y zsh
 yum install -y gnuplot
 yum install -y vim vi xclock screen tmux vim-minimal
 yum install -y git
@@ -38,13 +39,58 @@ yum install -y curl curl-devel
 yum install -y python-devel
 yum install -y arc
 yum install -y docker-io
+yum install -y pth-devel
 
---===============6871949986188555821==
+# GPG update
+
+export LDFLAGS=-L/usr/local
+
+cd /tmp
+curl -O https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.24.tar.bz2
+tar xjvf libgpg-error-1.24.tar.bz2
+cd libgpg-error-1.24
+./configure --prefix=/usr/local
+make
+make install
+
+cd /tmp
+curl -O https://www.gnupg.org/ftp/gcrypt/libassuan/libassuan-2.4.3.tar.bz2
+tar xjvf libassuan-2.4.3.tar.bz2
+cd libassuan-2.4.3
+./configure --prefix=/usr/local
+make
+make install
+
+cd /tmp
+curl -O https://www.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.7.3.tar.bz2
+tar xjvf libgcrypt-1.7.3.tar.bz2
+cd libgcrypt-1.7.3
+./configure --prefix=/usr/local
+make
+make install
+
+cd /tmp
+curl -O https://www.gnupg.org/ftp/gcrypt/libksba/libksba-1.3.5.tar.bz2
+tar xjvf libksba-1.3.5.tar.bz2
+cd libksba-1.3.5
+./configure --prefix=/usr/local
+make
+make install
+
+cd /tmp
+curl -O https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-2.0.30.tar.bz2
+tar xjvf gnupg-2.0.30.tar.bz2
+cd gnupg-2.0.30
+./configure --prefix=/usr/local
+make
+make install
+
+--===============0110007543605621124==
 Content-Type: text/cloud-config; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: attachment;
-	filename="devel-openstack-vm-userdata_cloud-config.txt"
+ filename="devel-openstack-vm-userdata_cloud-config.txt"
 
 #cloud-config
 runcmd:
@@ -52,4 +98,4 @@ runcmd:
  - [ /usr/bin/yum, "localinstall", -y, "/tmp/HEP_OSlibs-7.1.5-0.el7.cern.x86_64.rpm"]
 
 
---===============6871949986188555821==--
+--===============0110007543605621124==--
