@@ -1,12 +1,12 @@
-Content-Type: multipart/mixed; boundary="===============8101316004073812435=="
+Content-Type: multipart/mixed; boundary="===============0052234495197571871=="
 MIME-Version: 1.0
 
---===============8101316004073812435==
+--===============0052234495197571871==
 Content-Type: text/x-shellscript; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: attachment;
-	filename="devel-openstack-vm-userdata_shell.txt"
+ filename="devel-openstack-vm-userdata_shell.txt"
 
 #!/bin/sh
 yum install -y zsh
@@ -90,13 +90,18 @@ make install
 curl -L "https://github.com/docker/compose/releases/download/1.8.1/docker-compose-$(uname -s)-$(uname -m)" > /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
 
+# Enable docker at startup
+systemctl enable docker.service
 
---===============8101316004073812435==
+# Add myself to the group allowed to use docker
+usermod -aG docker rovere
+
+--===============0052234495197571871==
 Content-Type: text/cloud-config; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: attachment;
-	filename="devel-openstack-vm-userdata_cloud-config.txt"
+ filename="devel-openstack-vm-userdata_cloud-config.txt"
 
 #cloud-config
 runcmd:
@@ -104,4 +109,4 @@ runcmd:
  - [ /usr/bin/yum, "localinstall", -y, "/tmp/HEP_OSlibs-7.1.5-0.el7.cern.x86_64.rpm"]
 
 
---===============8101316004073812435==--
+--===============0052234495197571871==--
