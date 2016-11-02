@@ -24,7 +24,7 @@ yum install -y tk
 yum install -y compat-libstdc++-33
 yum install -y cern-config-users
 yum install -y R
-yum install -y curl-devel
+yum install -y curl curl-devel
 yum install -y python-devel
 yum install -y arc
 yum install -y docker-io

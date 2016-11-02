@@ -1,12 +1,12 @@
-Content-Type: multipart/mixed; boundary="===============1953235708642021237=="
+Content-Type: multipart/mixed; boundary="===============6871949986188555821=="
 MIME-Version: 1.0
 
---===============1953235708642021237==
+--===============6871949986188555821==
 Content-Type: text/x-shellscript; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: attachment;
- filename="devel-openstack-vm-userdata_shell.txt"
+	filename="devel-openstack-vm-userdata_shell.txt"
 
 #!/bin/sh
 yum install -y gnuplot
@@ -34,22 +34,22 @@ yum install -y tk
 yum install -y compat-libstdc++-33
 yum install -y cern-config-users
 yum install -y R
-yum install -y curl-devel
+yum install -y curl curl-devel
 yum install -y python-devel
 yum install -y arc
 yum install -y docker-io
 
---===============1953235708642021237==
+--===============6871949986188555821==
 Content-Type: text/cloud-config; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: attachment;
- filename="devel-openstack-vm-userdata_cloud-config.txt"
+	filename="devel-openstack-vm-userdata_cloud-config.txt"
 
 #cloud-config
 runcmd:
- - [ /usr/bin/wget, "http://linuxsoft.cern.ch/wlcg/sl6/x86_64/HEP_OSlibs_SL6-1.0.16-0.el6.x86_64.rpm", -O, "/tmp/HEP_OSlibs_SL6-1.0.16-0.el6.x86_64.rpm"]
- - [ /usr/bin/yum, "localinstall", -y, "/tmp/HEP_OSlibs_SL6-1.0.16-0.el6.x86_64.rpm"]
+ - [ /usr/bin/wget, "http://linuxsoft.cern.ch/wlcg/centos7/x86_64/HEP_OSlibs-7.1.5-0.el7.cern.x86_64.rpm", -O, "/tmp/HEP_OSlibs-7.1.5-0.el7.cern.x86_64.rpm"]
+ - [ /usr/bin/yum, "localinstall", -y, "/tmp/HEP_OSlibs-7.1.5-0.el7.cern.x86_64.rpm"]
 
 
---===============1953235708642021237==--
+--===============6871949986188555821==--
