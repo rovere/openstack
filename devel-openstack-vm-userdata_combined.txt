@@ -1,12 +1,12 @@
-Content-Type: multipart/mixed; boundary="===============0110007543605621124=="
+Content-Type: multipart/mixed; boundary="===============8101316004073812435=="
 MIME-Version: 1.0
 
---===============0110007543605621124==
+--===============8101316004073812435==
 Content-Type: text/x-shellscript; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: attachment;
- filename="devel-openstack-vm-userdata_shell.txt"
+	filename="devel-openstack-vm-userdata_shell.txt"
 
 #!/bin/sh
 yum install -y zsh
@@ -85,12 +85,18 @@ cd gnupg-2.0.30
 make
 make install
 
---===============0110007543605621124==
+
+# Get docker-compose
+curl -L "https://github.com/docker/compose/releases/download/1.8.1/docker-compose-$(uname -s)-$(uname -m)" > /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+
+
+--===============8101316004073812435==
 Content-Type: text/cloud-config; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: attachment;
- filename="devel-openstack-vm-userdata_cloud-config.txt"
+	filename="devel-openstack-vm-userdata_cloud-config.txt"
 
 #cloud-config
 runcmd:
@@ -98,4 +104,4 @@ runcmd:
  - [ /usr/bin/yum, "localinstall", -y, "/tmp/HEP_OSlibs-7.1.5-0.el7.cern.x86_64.rpm"]
 
 
---===============0110007543605621124==--
+--===============8101316004073812435==--
