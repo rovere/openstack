@@ -30,6 +30,18 @@ yum install -y python-devel
 yum install -y arc
 yum install -y docker-io
 yum install -y pth-devel
+yum install -y gdb
+
+# For DXR
+yum install -y clang clang-devel llvm-devel
+yum install -y nodejs npm
+yum install -y java-1.7.0-openjdk
+yum install -y python-virtualenv
+yum install -y patch
+yum install -y lzo lzo-devel
+yum install -y openssl openssl-devel
+yum install -y httpd mod_ssl mod_wsgi
+/sbin/iptables -I INPUT 3 -p tcp --dport 80 -j ACCEPT
 
 # GPG update
 

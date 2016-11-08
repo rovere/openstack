@@ -1,12 +1,12 @@
-Content-Type: multipart/mixed; boundary="===============0052234495197571871=="
+Content-Type: multipart/mixed; boundary="===============3263976560138889052=="
 MIME-Version: 1.0
 
---===============0052234495197571871==
+--===============3263976560138889052==
 Content-Type: text/x-shellscript; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: attachment;
- filename="devel-openstack-vm-userdata_shell.txt"
+	filename="devel-openstack-vm-userdata_shell.txt"
 
 #!/bin/sh
 yum install -y zsh
@@ -40,6 +40,18 @@ yum install -y python-devel
 yum install -y arc
 yum install -y docker-io
 yum install -y pth-devel
+yum install -y gdb
+
+# For DXR
+yum install -y clang clang-devel llvm-devel
+yum install -y nodejs npm
+yum install -y java-1.7.0-openjdk
+yum install -y python-virtualenv
+yum install -y patch
+yum install -y lzo lzo-devel
+yum install -y openssl openssl-devel
+yum install -y httpd mod_ssl mod_wsgi
+/sbin/iptables -I INPUT 3 -p tcp --dport 80 -j ACCEPT
 
 # GPG update
 
@@ -96,17 +108,18 @@ systemctl enable docker.service
 # Add myself to the group allowed to use docker
 usermod -aG docker rovere
 
---===============0052234495197571871==
+--===============3263976560138889052==
 Content-Type: text/cloud-config; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: attachment;
- filename="devel-openstack-vm-userdata_cloud-config.txt"
+	filename="devel-openstack-vm-userdata_cloud-config.txt"
 
 #cloud-config
 runcmd:
  - [ /usr/bin/wget, "http://linuxsoft.cern.ch/wlcg/centos7/x86_64/HEP_OSlibs-7.1.5-0.el7.cern.x86_64.rpm", -O, "/tmp/HEP_OSlibs-7.1.5-0.el7.cern.x86_64.rpm"]
  - [ /usr/bin/yum, "localinstall", -y, "/tmp/HEP_OSlibs-7.1.5-0.el7.cern.x86_64.rpm"]
+ - [ /usr/bin/curl, "https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.0.0.rpm", -O, "/tmp/elasticsearch-5.0.0.rpm"]
+ - [ /usr/bin/yum, "localinstall", -y, "/tmp/elasticsearch-5.0.0.rpm"]
 
-
---===============0052234495197571871==--
+--===============3263976560138889052==--

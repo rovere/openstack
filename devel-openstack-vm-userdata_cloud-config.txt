@@ -2,4 +2,5 @@
 runcmd:
  - [ /usr/bin/wget, "http://linuxsoft.cern.ch/wlcg/centos7/x86_64/HEP_OSlibs-7.1.5-0.el7.cern.x86_64.rpm", -O, "/tmp/HEP_OSlibs-7.1.5-0.el7.cern.x86_64.rpm"]
  - [ /usr/bin/yum, "localinstall", -y, "/tmp/HEP_OSlibs-7.1.5-0.el7.cern.x86_64.rpm"]
-
+ - [ /usr/bin/curl, "https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.0.0.rpm", -O, "/tmp/elasticsearch-5.0.0.rpm"]
+ - [ /usr/bin/yum, "localinstall", -y, "/tmp/elasticsearch-5.0.0.rpm"]
