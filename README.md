@@ -1,5 +1,5 @@
 # Notes to create an openstack VM at CERN
-#### inputs from @rovere @deguio @cerminar
+#### inputs from @rovere @deguio @cerminar @franzoni
 
 0. Key into concepts about cloud and openstack at CERN [here](https://clouddocs.web.cern.ch/clouddocs/overview/concepts.html)
 
