@@ -31,6 +31,9 @@ yum install -y arc
 yum install -y docker-io
 yum install -y pth-devel
 yum install -y gdb
+yum install -y conda
+yum install -y ipython
+yum install -y nano
 
 # For DXR
 yum install -y clang clang-devel llvm-devel
@@ -97,3 +100,9 @@ systemctl enable docker.service
 
 # Add myself to the group allowed to use docker
 usermod -aG docker rovere
+
+# https://cern.service-now.com/service-portal/article.do?n=KB0003846
+# enable eos and cvmfs clients
+sudo locmap --enable cvmfs
+sudo locmap --enable eosclient
+sudo locmap --configure all
