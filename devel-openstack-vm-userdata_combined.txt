@@ -1,7 +1,7 @@
-Content-Type: multipart/mixed; boundary="===============3263976560138889052=="
+Content-Type: multipart/mixed; boundary="===============1530726607338299682=="
 MIME-Version: 1.0
 
---===============3263976560138889052==
+--===============1530726607338299682==
 Content-Type: text/x-shellscript; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -41,6 +41,9 @@ yum install -y arc
 yum install -y docker-io
 yum install -y pth-devel
 yum install -y gdb
+yum install -y conda
+yum install -y ipython
+yum install -y nano
 
 # For DXR
 yum install -y clang clang-devel llvm-devel
@@ -108,7 +111,13 @@ systemctl enable docker.service
 # Add myself to the group allowed to use docker
 usermod -aG docker rovere
 
---===============3263976560138889052==
+# https://cern.service-now.com/service-portal/article.do?n=KB0003846
+# enable eos and cvmfs clients
+sudo locmap --enable cvmfs
+sudo locmap --enable eosclient
+sudo locmap --configure all
+
+--===============1530726607338299682==
 Content-Type: text/cloud-config; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -122,4 +131,4 @@ runcmd:
  - [ /usr/bin/curl, "https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.0.0.rpm", -O, "/tmp/elasticsearch-5.0.0.rpm"]
  - [ /usr/bin/yum, "localinstall", -y, "/tmp/elasticsearch-5.0.0.rpm"]
 
---===============3263976560138889052==--
+--===============1530726607338299682==--
