@@ -1,3 +1,5 @@
+# Notes to create an openstack VM at CERN
+
 0. Key into concepts about cloud and openstack at CERN [here](https://clouddocs.web.cern.ch/clouddocs/overview/concepts.html)
 
 1. Edit the files ```devel-openstack-vm-userdata_shell.txt``` and ```devel-openstack-vm-userdata_cloud-config.txt``` adding/modifying items according to your needs: packages to be installed in the VM you're creating, commands/options executed in the VM creation 
