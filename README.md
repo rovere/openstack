@@ -1,4 +1,5 @@
 # Notes to create an openstack VM at CERN
+## inputs from @rovere @deguio @cerminar
 
 0. Key into concepts about cloud and openstack at CERN [here](https://clouddocs.web.cern.ch/clouddocs/overview/concepts.html)
 
@@ -16,5 +17,11 @@ write-mime-multipart --output=devel-openstack-vm-userdata_combined.txt devel-ope
 5. Creating a new VM logging into the ```ssh lxplus-cloud``` cluster and customising this command with your ingredients:
 
 ```
+
+setenv OS_AUTH_URL https://keystone.cern.ch/main/v2.0
+setenv OS_USERNAME `id -un`
+setenv OS_TENANT_NAME "Personal $OS_USERNAME"
+
+
 nova boot --image "CC7 - x86_64 [2018-12-03]" --flavor m2.small --key-name gf-VM-key-2019-09-09  --user-data devel-openstack-vm-userdata_combined.txt   gf-vm-slc7-c
 ```
