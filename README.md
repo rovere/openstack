@@ -18,9 +18,9 @@ write-mime-multipart --output=devel-openstack-vm-userdata_combined.txt devel-ope
 
 ```
 
-setenv OS_AUTH_URL https://keystone.cern.ch/main/v2.0
-setenv OS_USERNAME `id -un`
-setenv OS_TENANT_NAME "Personal $OS_USERNAME"
+export OS_AUTH_URL=https://keystone.cern.ch/main/v2.0
+export OS_USERNAME=`id -un`
+export OS_TENANT_NAME="Personal $OS_USERNAME"
 
 
 nova boot --image "CC7 - x86_64 [2018-12-03]" --flavor m2.small --key-name gf-VM-key-2019-09-09  --user-data devel-openstack-vm-userdata_combined.txt   gf-vm-slc7-c
