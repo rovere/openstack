@@ -25,3 +25,13 @@ setenv OS_TENANT_NAME "Personal $OS_USERNAME"
 
 nova boot --image "CC7 - x86_64 [2018-12-03]" --flavor m2.small --key-name gf-VM-key-2019-09-09  --user-data devel-openstack-vm-userdata_combined.txt   gf-vm-slc7-c
 ```
+
+6. once the VM is up and runnng, ```cvmfs``` is active yet not fully configured (which leands to the wrong value of the soft link ```/cvmfs/cms.cern.ch/SITECONF/local```, which crashes cmsRun when trying to access global tag from a CERN-located VM ) 
+```
+edit in the file 
+/etc/cvmfs/config.d/cms.cern.ch.conf
+
+export CMS_LOCAL_SITE
+to
+export CMS_LOCAL_SITE=T2_CH_CERN
+```
