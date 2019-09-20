@@ -40,9 +40,7 @@ export CMS_LOCAL_SITE=T2_CH_CERN
 
 ```
 ---------------------------------------------------------------------------------------
-[16:06:33 - 19-09-16]  /afs/cern.ch/user/f/franzoni % hostname
-franzoni-slc7-b.cern.ch
-[16:06:43 - 19-09-16]  /afs/cern.ch/user/f/franzoni % diff /etc/auto.eos  ~/auto.eos
+copy /etc/auto.eos from lxplus into your machine
 [16:06:45 - 19-09-16]  /afs/cern.ch/user/f/franzoni % sudo /bin/systemctl restart autofs.service
 [sudo] password for franzoni:
 [16:07:08 - 19-09-16]  /afs/cern.ch/user/f/franzoni % lt /eos/cms
@@ -52,4 +50,14 @@ drwxr-xr-x. 1 root root 162T Jul 28  2011 proc/
 drwxr-xr-x. 1 root root    0 May 13  2014 cmst3/
 drwxr-x---. 1 root zh      0 Mar 16  2015 tier0/
 drwxr-xr-x. 1 8619 2688 9.7G Apr 23 13:17 opstest/
+```
+Futhemore, you need to jave a kerberos token setup in the machine you connect to the VM from
+```
+kinit franzoni@CERN.CH
+klist
+```
+and ensure that the following options are enabled in your ~/.ssh/config (and/or /etc/ssh/ssh_config?)
+```
+GSSAPIAuthentication yes
+GSSAPIDelegateCredentials yes
 ```
