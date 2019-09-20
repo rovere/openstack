@@ -18,9 +18,9 @@ write-mime-multipart --output=devel-openstack-vm-userdata_combined.txt devel-ope
 
 ```
 
-setenv OS_AUTH_URL https://keystone.cern.ch/main/v2.0
-setenv OS_USERNAME `id -un`
-setenv OS_TENANT_NAME "Personal $OS_USERNAME"
+export OS_AUTH_URL=https://keystone.cern.ch/main/v2.0
+export OS_USERNAME=`id -un`
+export OS_TENANT_NAME="Personal $OS_USERNAME"
 
 
 nova boot --image "CC7 - x86_64 [2018-12-03]" --flavor m2.small --key-name gf-VM-key-2019-09-09  --user-data devel-openstack-vm-userdata_combined.txt   gf-vm-slc7-c
@@ -34,4 +34,30 @@ edit in the file
 export CMS_LOCAL_SITE
 to
 export CMS_LOCAL_SITE=T2_CH_CERN
+```
+
+7. Also the eos installation is not complete, by just execiting the commands ```locmap --enable eosclient; locmap --configure eosclient```, as reported in the [documenration]( https://cern.service-now.com/service-portal/article.do?n=KB0003846 ): the home directories ```ls -ltrFh /eos/home-f/franzoni``` are accessible, but not the content of ```/eos/cms```. Based on the [ticket](https://cern.service-now.com/service-portal/view-request.do?n=RQF1404375), I've had to additionally do:
+
+```
+---------------------------------------------------------------------------------------
+copy /etc/auto.eos from lxplus into your machine
+[16:06:45 - 19-09-16]  /afs/cern.ch/user/f/franzoni % sudo /bin/systemctl restart autofs.service
+[sudo] password for franzoni:
+[16:07:08 - 19-09-16]  /afs/cern.ch/user/f/franzoni % lt /eos/cms
+total 0
+drwxr-xr-x. 1 5410 zh    16P May 18  2011 store/
+drwxr-xr-x. 1 root root 162T Jul 28  2011 proc/
+drwxr-xr-x. 1 root root    0 May 13  2014 cmst3/
+drwxr-x---. 1 root zh      0 Mar 16  2015 tier0/
+drwxr-xr-x. 1 8619 2688 9.7G Apr 23 13:17 opstest/
+```
+Futhemore, you need to jave a kerberos token setup in the machine you connect to the VM from
+```
+kinit franzoni@CERN.CH
+klist
+```
+and ensure that the following options are enabled in your ~/.ssh/config (and/or /etc/ssh/ssh_config?)
+```
+GSSAPIAuthentication yes
+GSSAPIDelegateCredentials yes
 ```
