@@ -54,6 +54,7 @@ yum install -y patch
 yum install -y lzo lzo-devel
 yum install -y openssl openssl-devel
 yum install -y httpd mod_ssl mod_wsgi
+yum install -y root
 /sbin/iptables -I INPUT 3 -p tcp --dport 80 -j ACCEPT
 
 # GPG update
